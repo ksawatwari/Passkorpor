@@ -1,0 +1,71 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme {
+  --font-sans: var(--font-prompt), ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  font-family: var(--font-sans);
+}
+
+.tip-box {
+  @apply bg-orange-50 border-l-4 border-orange-500 p-4 rounded-r-xl my-6 shadow-sm;
+}
+.tip-header {
+  @apply text-orange-700 font-bold mb-2 flex items-center gap-2;
+}
+
+.warning-box {
+  @apply bg-red-50 border-l-4 border-red-500 p-4 rounded-r-xl my-6 shadow-sm;
+}
+.warning-header {
+  @apply text-red-700 font-bold mb-2 flex items-center gap-2;
+}
+
+.accordion-box {
+  @apply border border-gray-200 rounded-xl my-6 bg-white shadow-sm overflow-hidden;
+}
+.accordion-box summary {
+  @apply font-bold text-gray-900 bg-gray-50 p-4 cursor-pointer focus:outline-none hover:bg-gray-100 transition-colors list-none flex justify-between items-center;
+}
+.accordion-box summary::-webkit-details-marker {
+  display: none;
+}
+.accordion-box summary::after {
+  content: '▼';
+  font-size: 0.8em;
+  color: #6b7280;
+  transition: transform 0.2s;
+}
+.accordion-box[open] summary::after {
+  transform: rotate(180deg);
+}
+.accordion-content {
+  @apply p-4 text-gray-700 border-t border-gray-100;
+}
+
+.markdown-body {
+  @apply text-gray-800 leading-relaxed;
+}
+.markdown-body h1 {
+  @apply text-3xl font-bold mb-6 text-gray-900;
+}
+.markdown-body h2 {
+  @apply text-2xl font-bold mt-8 mb-4 text-gray-900 border-b border-gray-100 pb-2;
+}
+.markdown-body h3 {
+  @apply text-xl font-bold mt-6 mb-3 text-gray-900;
+}
+.markdown-body p {
+  @apply mb-4;
+}
+.markdown-body ul {
+  @apply list-disc list-inside mb-4 space-y-2 text-gray-700;
+}
+.markdown-body ol {
+  @apply list-decimal list-inside mb-4 space-y-2 text-gray-700;
+}
+.markdown-body strong {
+  @apply font-bold text-gray-900;
+}
