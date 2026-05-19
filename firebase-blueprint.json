@@ -1,0 +1,21 @@
+{
+  "entities": {
+    "Lesson": {
+      "title": "Lesson",
+      "description": "Course lesson content",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "order": { "type": "number" },
+        "content": { "type": "string" }
+      },
+      "required": ["title", "order", "content"]
+    }
+  },
+  "firestore": {
+    "lessons/{lessonId}": {
+      "schema": "Lesson",
+      "description": "Store all available lessons for the course. Read-only for authenticated students."
+    }
+  }
+}

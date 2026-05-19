@@ -1,0 +1,6 @@
+{
+  "name": "English ก.พ. Landing Page",
+  "description": "High-conversion landing page for English ก.พ. online course targeting Thai government exam candidates.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
