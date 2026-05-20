@@ -13,7 +13,8 @@ import {
   X,
   Lock,
   Unlock,
-  QrCode
+  QrCode,
+  Star
 } from 'lucide-react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
@@ -115,17 +116,13 @@ function Hero() {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[120%] h-[800px] bg-gradient-to-b from-blue-50 to-white rounded-[100%] -z-10 blur-3xl opacity-50"></div>
       
       <div className="max-w-5xl mx-auto px-4 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
+        <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
           <span className="inline-block py-1.5 px-4 rounded-full bg-blue-100 text-blue-700 font-semibold text-sm mb-6 border border-blue-200">
-            อัปเดตเนื้อหาล่าสุด ปี 2569
+            เข้าใจง่าย
           </span>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-gray-900 leading-[1.2] tracking-tight mb-6">
-            สรุปอังกฤษ ก.พ. <br className="hidden sm:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">ฉบับคนไม่มีพื้นฐาน</span> <br />
+            สอบผ่านภาษาอังกฤษ ก.พ. <br className="hidden sm:block" />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">ฉบับรวบรัด</span> <br />
             อ่านน้อยแต่สอบผ่านชัวร์!
           </h1>
           <p className="text-lg sm:text-xl text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">
@@ -139,7 +136,7 @@ function Hero() {
               className="w-full sm:w-auto bg-orange-500 hover:bg-orange-600 text-white text-lg font-bold px-8 py-4 rounded-2xl shadow-xl shadow-orange-500/20 transition-transform hover:-translate-y-1 active:translate-y-0 flex items-center justify-center gap-2"
             >
               <Target className="w-5 h-5" />
-              ปลดล็อคเนื้อหาทันที
+              สมัครเลย
             </button>
             <p className="sm:hidden text-sm text-gray-500 mt-2">*รับประกันความพอใจ</p>
           </div>
@@ -162,7 +159,7 @@ function Hero() {
               <div className="text-sm text-gray-600">ปรึกษาพี่ติวเตอร์ได้ตลอด<br />(ตอบกลับภายใน 24 ชม.)</div>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
@@ -185,20 +182,17 @@ function PainPoints() {
         
         <div className="grid md:grid-cols-3 gap-8">
           {points.map((point, i) => (
-            <motion.div 
+            <div 
               key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="bg-red-50/50 rounded-3xl p-8 border border-red-100 hover:border-red-200 transition-colors"
+              className="bg-red-50/50 rounded-3xl p-8 border border-red-100 hover:border-red-200 transition-colors animate-in fade-in slide-in-from-bottom-4 duration-700"
+              style={{ animationDelay: `${i * 150}ms`, animationFillMode: 'both' }}
             >
               <div className="w-12 h-12 bg-red-100 text-red-600 rounded-2xl flex items-center justify-center mb-6 text-xl font-bold">
                 {i+1}
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">{point.title}</h3>
               <p className="text-gray-600 leading-relaxed">{point.desc}</p>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
@@ -294,6 +288,54 @@ function CourseContent() {
   );
 }
 
+function StudentReviews() {
+  const predefinedReviews = [
+    { id: '1', name: 'K. แบงค์', text: 'ตอนแรกกลัวพาร์ท Grammar มาก แต่พี่สรุปเข้าใจง่ายจริงๆ เรียนจบไวมากครับ', rating: 5 },
+    { id: '2', name: 'K. มะลิ', text: 'ราคา 199 บาทแต่เนื้อหาแน่นเกินคาด พาร์ท Conversation ช่วยได้เยอะมาก', rating: 5 },
+    { id: '3', name: 'K. อาร์ท', text: 'เหมาะสำหรับคนไม่มีเวลาเตรียมตัวแบบเรา สรุปมาให้แต่เน้นๆ ตรงจุด', rating: 5 },
+    { id: '4', name: 'K. ส้ม', text: 'โอนปุ๊บได้รหัสเข้าเรียนทันที ระบบอัตโนมัติสะดวกมาก ไม่ต้องรอแอดมินเลยค่ะ', rating: 5 },
+  ];
+
+  return (
+    <section className="py-20 bg-white border-b border-gray-100">
+      <div className="max-w-6xl mx-auto px-4">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">รีวิวจากผู้เรียนจริง</h2>
+          <p className="text-lg text-gray-600">ความประทับใจจากนักเรียนที่พิชิตข้อสอบ ก.พ. ไปด้วยกัน</p>
+        </div>
+        
+        <div className="flex overflow-x-auto pb-8 gap-6 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+          {predefinedReviews.map((review, idx) => (
+            <div key={idx} className="snap-center shrink-0 w-80 md:w-96 bg-gray-50 p-8 rounded-3xl border border-gray-100 flex flex-col">
+              <div className="flex gap-1 mb-4 text-yellow-400">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star key={i} className="w-5 h-5 fill-current" />
+                ))}
+              </div>
+              <p className="text-gray-700 text-lg leading-relaxed mb-6 flex-grow font-medium">"{review.text}"</p>
+              <div className="flex items-center gap-3 mt-auto">
+                <div className="w-10 h-10 bg-gradient-to-br from-blue-100 to-indigo-100 text-blue-800 rounded-full flex items-center justify-center font-bold text-lg">
+                  {review.name.replace('K. ', '')[0] || '?'}
+                </div>
+                <div>
+                  <div className="font-bold text-gray-900">{review.name}</div>
+                  <div className="text-xs text-gray-500">ผู้เข้าร่วมคอร์ส</div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        
+        <div className="text-center mt-6">
+          <Link href="/reviews" className="inline-flex items-center gap-2 text-blue-600 font-bold hover:text-blue-800 transition-colors">
+            ดูรีวิวทั้งหมด <ChevronDown className="w-4 h-4 -rotate-90" />
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function PricingPayment() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [name, setName] = useState('');
@@ -377,7 +419,7 @@ function PricingPayment() {
               ลงทุนกับอนาคต <br/>ในราคาสุดคุ้ม!
             </h2>
             <p className="text-xl text-gray-600 mb-8">
-              คอร์สเต็ม เนื้อหาจัดเต็ม ไม่มีกั๊ก ปกติ 398 บาท
+              คอร์สเต็ม เนื้อหาจัดเต็ม ไม่มีกั๊ก ปกติ 1,990 บาท
             </p>
             
             <div className="bg-gradient-to-br from-blue-900 to-indigo-900 rounded-3xl p-8 text-white shadow-2xl relative overflow-hidden">
@@ -385,7 +427,7 @@ function PricingPayment() {
                 ลด 50% รับจำนวนจำกัด
               </div>
               
-              <div className="line-through text-blue-300 text-xl mb-1">ราคาปกติ 398.-</div>
+              <div className="line-through text-blue-300 text-xl mb-1">ราคาปกติ 1,990.-</div>
               <div className="flex items-baseline gap-2 justify-center lg:justify-start mb-6">
                 <span className="text-5xl font-extrabold text-orange-400">199</span>
                 <span className="text-xl">บาท</span>
@@ -667,6 +709,7 @@ export default function LandingPage() {
         <Hero />
         <PainPoints />
         <CourseContent />
+        <StudentReviews />
         <PricingPayment />
         <UnlockAccess />
       </main>
